@@ -7,13 +7,22 @@ const apiURL = "https://api.alquran.cloud/v1";
 
 let data1 = [];
 
+let page = 1;
+let start = 0;
+let end = 2;
+
+// Set direction HTML
+function dirHTML(direction) {
+  const html = document.querySelector("html");
+  html.setAttribute("dir", direction);
+}
+
 // Search by surah
 async function searchSurah(term) {
   const res = await fetch(`${apiURL}/juz/${term}`);
   const data = await res.json();
 
-  const html = document.querySelector("html");
-  html.setAttribute("dir", "ltr");
+  dirHTML("ltr");
 
   page = 1;
   start = 0;
@@ -23,17 +32,13 @@ async function searchSurah(term) {
   showData(data1);
 }
 
-let page = 1;
-let start = 0;
-let end = 2;
-
 // Show Juz in DOM
 function showData(data = data1) {
   const numPages = Math.ceil(Object.keys(data.data.surahs).length / 2);
   start = (page - 1) * 2; // 0
   end = page * 2; // 2
-
   pagKeys = Object.keys(data.data.surahs).slice(start, end);
+
   result.innerHTML = `
     <ul class="surahs">
       ${pagKeys
@@ -62,7 +67,7 @@ function showData(data = data1) {
   // // Pagination
   if (page === 1 && numPages > 1) {
     more.innerHTML = `
-      <button  class="btn pagination pag-next">
+      <button  class="btn pag-next">
         Next
       </button>
     `;
@@ -70,7 +75,7 @@ function showData(data = data1) {
 
   if (page === numPages && numPages > 1 && page > 0) {
     more.innerHTML = `
-      <button  class="btn pagination pag-prev">
+      <button  class="btn pag-prev">
         Prev
       </button>
     `;
@@ -82,7 +87,7 @@ function showData(data = data1) {
       page - 1 === 0
         ? ""
         : `
-    <button  class="btn pagination pag-prev">
+    <button  class="btn pag-prev">
       Prev
     </button>
     `
@@ -92,7 +97,7 @@ function showData(data = data1) {
       page === numPages
         ? ""
         : `
-    <button  class="btn pagination pag-next">
+    <button  class="btn pag-next">
       Next
     </button>
     `
@@ -122,14 +127,21 @@ async function getAyahs(number, name) {
   const res = await fetch(`${apiURL}/surah/${number}`);
   const data = await res.json();
 
-  const html = document.querySelector("html");
-  html.setAttribute("dir", "rtl");
+  dirHTML("rtl");
 
   result.innerHTML = `
   <h2 dir="rtl"><strong>${name}</strong></h2>
-  ${data.data.ayahs.map(
-    (ayah) => `<span dir="rtl" class="ayah"> ${ayah.text} *** </span>`
-  )}
+  ${data.data.ayahs
+    .map(
+      (ayah, i) =>
+        `<span dir="rtl" class="ayah">
+          ${ayah.text}
+        </span>
+        <span class="number">
+          ${i + 1}
+        </span>`
+    )
+    .join("")}
   `;
 
   more.innerHTML = "";

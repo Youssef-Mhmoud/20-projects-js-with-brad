@@ -6,6 +6,9 @@ body {
   background-color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+
+  position: relative;
+  z-index: -1111;
 }
 
 button {
@@ -112,7 +115,7 @@ ul.surahs li {
 }
 
 .container h2 {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 700;
 }
 
@@ -121,9 +124,23 @@ ul.surahs li {
 }
 
 .container .ayah {
-  font-size: 20px;
+  font-size: 25px;
   line-height: 2;
   font-weight: 700;
+}
+
+.container .number {
+  background-color: #a05b15;
+  color: #fff;
+
+  padding: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .centered {
