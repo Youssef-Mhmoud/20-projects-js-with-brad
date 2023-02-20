@@ -3,7 +3,7 @@ const search = document.getElementById("search");
 const result = document.getElementById("result");
 const more = document.getElementById("more");
 
-const apiURL = "http://api.alquran.cloud/v1";
+const apiURL = "https://api.alquran.cloud/v1";
 
 let data1 = [];
 
