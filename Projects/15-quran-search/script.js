@@ -10,6 +10,7 @@ let data1 = [];
 let page = 1;
 let start = 0;
 let end = 2;
+let numPages;
 
 // Set direction HTML
 function dirHTML(direction) {
@@ -32,27 +33,37 @@ async function searchSurah(term) {
   showData(data1);
 }
 
+// Init pagination
+function paginationInit(data, showSurahs) {
+  start = (page - 1) * showSurahs; // 0
+  end = page * showSurahs; // 2
+  const pagKeys = Object.keys(data).slice(start, end);
+
+  numPages = Math.ceil(Object.keys(data).length / showSurahs);
+
+  return pagKeys;
+}
+
 // Show Juz in DOM
 function showData(data = data1) {
-  const numPages = Math.ceil(Object.keys(data.data.surahs).length / 2);
-  start = (page - 1) * 2; // 0
-  end = page * 2; // 2
-  pagKeys = Object.keys(data.data.surahs).slice(start, end);
+  const surahs = data.data.surahs;
+
+  const showSurahs = paginationInit(surahs, 5);
 
   result.innerHTML = `
     <ul class="surahs">
-      ${pagKeys
+      ${showSurahs
         .map(
           (key) =>
             `
           <li>
             <span>
-              <strong>${data.data.surahs[key].englishName}</strong> - ${data.data.surahs[key].name}
+              <strong>${surahs[key].englishName}</strong> - ${surahs[key].name}
             </span>
             <button
               class="btn"
-              data-surah-number="${data.data.surahs[key].number}"
-              data-surah-name="${data.data.surahs[key].name}"
+              data-surah-number="${surahs[key].number}"
+              data-surah-name="${surahs[key].name}"
             >
               Get Ayahs
             </button>
@@ -106,14 +117,14 @@ function showData(data = data1) {
   }
 }
 
-// // Next more surahs
+// Next more surahs
 function nextData() {
   page++;
 
   showData();
 }
 
-// // Prev
+// Prev
 function prevData() {
   if (page <= 1) return;
 
