@@ -48,7 +48,7 @@ function paginationInit(data, showSurahs) {
 function showData(data = data1) {
   const surahs = data.data.surahs;
 
-  const showSurahs = paginationInit(surahs, 5);
+  const showSurahs = paginationInit(surahs, 2);
 
   result.innerHTML = `
     <ul class="surahs">
@@ -74,8 +74,9 @@ function showData(data = data1) {
     </ul>
   `;
 
-  if (numPages === 1) more.innerHTML = ``;
   // // Pagination
+  if (numPages === 1) more.innerHTML = ``;
+
   if (page === 1 && numPages > 1) {
     more.innerHTML = `
       <button  class="btn pag-next">
@@ -92,27 +93,15 @@ function showData(data = data1) {
     `;
   }
 
-  if (page < numPages && page > 0) {
+  if (page < numPages && page > 1) {
     more.innerHTML = `
-    ${
-      page - 1 === 0
-        ? ""
-        : `
     <button  class="btn pag-prev">
       Prev
     </button>
-    `
-    }
 
-    ${
-      page === numPages
-        ? ""
-        : `
     <button  class="btn pag-next">
       Next
     </button>
-    `
-    }
     `;
   }
 }
@@ -165,7 +154,7 @@ form.addEventListener("submit", (e) => {
   const searchTerm = search.value.trim();
 
   if (!searchTerm) {
-    alert("Please type in a search term");
+    alert("Please type number of the juz'a (1 : 30)");
   } else {
     searchSurah(searchTerm);
   }
