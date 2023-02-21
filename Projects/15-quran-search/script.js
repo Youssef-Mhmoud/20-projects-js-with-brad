@@ -123,7 +123,7 @@ function prevData() {
 }
 
 // Get Ayahs
-async function getAyahs(number, name) {
+async function getAyahs(number, ...name) {
   const res = await fetch(`${apiURL}/surah/${number}`);
   const data = await res.json();
 
@@ -160,6 +160,11 @@ form.addEventListener("submit", (e) => {
   }
 });
 
+// Get attribute
+function getAttribute(clickBtn, attrsName) {
+  return clickBtn.getAttribute(attrsName);
+}
+
 ///////////////////////////
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("pag-next")) nextData();
@@ -171,9 +176,13 @@ result.addEventListener("click", (e) => {
   const clickedEl = e.target;
 
   if (clickedEl.tagName === "BUTTON") {
-    const numberSurah = clickedEl.getAttribute("data-surah-number");
-    const nameSurah = clickedEl.getAttribute("data-surah-name");
+    // const numberSurah = clickedEl.getAttribute("data-surah-number");
+    // const nameSurah = clickedEl.getAttribute("data-surah-name");
 
-    getAyahs(numberSurah, nameSurah);
+    // getAyahs(numberSurah, nameSurah);
+    getAyahs(
+      getAttribute(clickedEl, "data-surah-number"),
+      getAttribute(clickedEl, "data-surah-name")
+    );
   }
 });
