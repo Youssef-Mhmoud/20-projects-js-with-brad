@@ -11,12 +11,12 @@
 | 07  |               [Hangman Game](./Projects/07-hangman/)                |            [Live Demo](https://hangman-3.netlify.app/)             |
 | 08  |            [Mealfinder App](./Projects/08-meal-finder/)             |          [Live Demo](https://meal-finder-1.netlify.app/)           |
 | 09  |          [Expense Tracker](./Projects/09-expense-tracker/)          |        [Live Demo](https://expense-tracker-3.netlify.app/)         |
-| 10  |             [Music Player](./Projects/10-quran-player/)             |        [Live Demo](https://player-application.vercel.app/)         |
+| 10  |             [Quran Player](./Projects/10-quran-player/)             |        [Live Demo](https://player-application.vercel.app/)         |
 | 11  |     [Infinite Scrolling](./Projects/11-infinte_scrolling_blog/)     |     [Live Demo](https://infinite-scrolling-blog.netlify.app/)      |
 | 12  |              [Typing Game](./Projects/12-typing-game/)              |          [Live Demo](https://typing-game-3.netlify.app/)           |
 | 13  |       [Speech Text Reader](./Projects/13-speech-text-reader/)       |       [Live Demo](https://speech-text-reader-3.netlify.app/)       |
 | 14  |             [Memory Cards](./Projects/14-memory-cards/)             |          [Live Demo](https://memory-card-3.netlify.app/)           |
-| 15  |           [LyricsSearch App](./Projects/15-quran-search/)           |           [Live Demo](https://quran-search.vercel.app/)            |
+| 15  |           [Quran Search App](./Projects/15-quran-search/)           |           [Live Demo](https://quran-search.vercel.app/)            |
 | 16  |              [Relaxer App](./Projects/16-relaxer-app/)              |          [Live Demo](https://relaxer-app-3.netlify.app/)           |
 | 17  |            [Breakout Game](./Projects/17-breakout-game/)            |         [Live Demo](https://breakout-game-3.netlify.app/)          |
 | 18  |       [New Year Countdown](./Projects/18-new-year-countdown/)       |       [Live Demo](https://new-year-countdown-1.netlify.app/)       |
