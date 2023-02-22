@@ -123,7 +123,7 @@ function prevData() {
 }
 
 // Get Ayahs
-async function getAyahs(number, ...name) {
+async function getAyahs(number, name) {
   const res = await fetch(`${apiURL}/surah/${number}`);
   const data = await res.json();
 
